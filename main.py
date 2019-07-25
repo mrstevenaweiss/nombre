@@ -19,7 +19,8 @@ def get_all_names():
     # make the print better...
     with open("names.txt") as name_db:
         names_decoded = json.load(name_db)
-        print(names_decoded)
+        for name in names_decoded:
+            print(name, "-->", names_decoded[name])
 
 def all_address_book():
     get_all_names()
@@ -114,8 +115,9 @@ def main(name):
             print('\n')
             break
 
-        elif choice === "0":
+        elif choice == "0":
             instructions()
+            menu_text()
 
         else:
             return_possibles(choice)

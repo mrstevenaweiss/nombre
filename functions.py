@@ -24,7 +24,7 @@ def menu_text():
 def instructions():
     print('\t NOMBRE is a name memory program ')
     print('\n')
-    print("\t You know how you run into someone and their name is always at the tip of your tongue?")
-    print("\t Well, instead of straining yourself, trying typing in the memories you associate with them.")
+    print("\t You know when you run into someone and their name is always at the tip of your tongue?")
+    print("\t Well, instead of straining yourself, try typing in the memories you associate with them.")
     print("\t We'll give you back a list of possibles")
 
