@@ -1,6 +1,4 @@
 from functions import *
-# def instructions():
-#     return
 import json
 import os.path
 from os import path
@@ -18,6 +16,7 @@ def start_db():
         print("\n")
 
 def get_all_names():
+    # make the print better...
     with open("names.txt") as name_db:
         names_decoded = json.load(name_db)
         print(names_decoded)
@@ -50,25 +49,34 @@ def name_adder():
 def update_name(name, new_info):
     with open('names.txt') as name_db:
         names_decoded = json.load(name_db)
-        print(names_decoded[name])
     
-    # faker_db[name].append(new_info)
-    # return faker_db[name]
+    names_decoded[name].append(new_info)
+
+    with open('names.txt', 'w') as name_db:
+        json.dump(names_decoded, name_db)
+    return names_decoded[name]
 
 def name_updater(a_name):
     print("What memory would you like to associate with that person?" )
     a_memory = input(">>> ")
     update_name(a_name, a_memory)
     print("\n")
-    print("You have updated,", a_name)
-    print("\n")
+    print("You have updated,", a_name, "\n")
     menu_text()
 
+def check_db(name):
+    with open('names.txt') as name_db:
+        names_decoded = json.load(name_db)    
+    return name in names_decoded 
+
 def return_possibles(word):
-    term = input('Give me a word: ')
+    term = word
     new_list = []
 
-    for key, value in fake.items():
+    with open('names.txt') as name_db:
+        names_decoded = json.load(name_db)
+
+    for key, value in names_decoded.items():
         if term in value:
             new_list.append(key)
 
@@ -92,11 +100,10 @@ def main(name):
             print("Who would you like to update?" )
             a_name = input(">>> ")
             
-            # multiple entries
             if check_db(a_name) == True:
                 name_updater(a_name)
             else:
-                print("That person does not exist.  Try again." )
+                print("That person does not exist.  Try again. \n" )
                 menu_text()
 
         elif choice == "3":
@@ -106,15 +113,12 @@ def main(name):
             print('Thank you for using Nombre.  See you later.')
             print('\n')
             break
-        
-        elif choice == "4":
-            load_memory()
 
-        # else:
-            # this will be the memory recall 
-            # return_possibles(word)
+        elif choice === "0":
+            instructions()
 
-    # print("0: What is this app?")
+        else:
+            return_possibles(choice)
 
 main('Mr Weiss')
 
