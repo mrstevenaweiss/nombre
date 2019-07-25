@@ -2,8 +2,8 @@ import time
 import os
 
 def load(name):
-    print('Starting program...')
-    # time.sleep(2) 
+    print('Loading program...')
+    time.sleep(2) 
     os.system('clear')
     print('\n')
     print('\t Welcome to NOMBRE')

@@ -122,5 +122,7 @@ def main(name):
         else:
             return_possibles(choice)
 
-main('Mr Weiss')
+login = input("Please login with your first name: ")
+
+main(login)
 
